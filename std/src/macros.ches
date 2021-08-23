@@ -1,0 +1,11 @@
+macro fn print(str msg)
+
+end
+
+macro fn println()
+    print("\n")
+end
+
+macro fn println(str msg)
+    print(msg ~ "\n")
+end

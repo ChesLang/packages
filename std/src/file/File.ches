@@ -1,0 +1,39 @@
+class File
+
+fields
+    is_open bool,
+    path str,
+end
+
+pub fn @new(path str) File
+    ret new File
+        is_open: false
+        path: path
+    end
+end
+
+pub self fn @drop()
+    if is_open
+        self.close()
+    end
+end
+
+pub self fn close() throw FileErr
+    if !is_open
+        throw FileErr.FileAlreadyOpen(self.path)
+    end
+
+    self.is_open = false
+end
+
+pub self fn open() throw FileErr, PathErr
+    if is_open
+        throw FileErr.FileAlreadyOpen(self.path)
+    end
+
+    if !self.path.exists()
+        throw PathErr.PathNotFound(self.path)
+    end
+
+    self.is_open = true
+end

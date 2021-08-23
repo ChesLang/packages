@@ -1,0 +1,21 @@
+class Path
+
+fields
+    path str
+end
+
+pub fn @new(path str) Path
+    ret new Path
+        path: path
+    end
+end
+
+pub self fn exists() bool
+end
+
+pub self fn is_dir() bool
+end
+
+pub self fn is_file() bool
+    ret !self.is_dir()
+end

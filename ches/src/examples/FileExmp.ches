@@ -1,0 +1,59 @@
+class FileExmp
+
+pub self fn read_file()
+    println("Input file path:")
+    let input_path = readln()
+
+    let file = File(Path(input_path))
+
+    try file.open()
+        catch err(e Err)
+            println("Error occuring on opening file:")
+            println(e as str)
+            ret
+        end
+    end
+
+    for line = file.get_next_line()
+        println(line)
+    end
+
+    try file.close()
+        catch err(e Err)
+            println("Error occuring on closing file:")
+            println(e as str)
+            ret
+        end
+    end
+end
+
+pub self fn append_file_line()
+    println("Input file path:")
+    let input_path = readln()
+
+    let file = File(Path(input_path))
+
+    try file.open()
+        catch err(e Err)
+            println("Error occuring on opening file:")
+            println(e as str)
+            ret
+        end
+    end
+
+    try file.append("* New Line")
+        catch err(e Err)
+            println("Error occuring on writing file:")
+            println(e as str)
+            ret
+        end
+    end
+
+    try file.close()
+        catch err(e Err)
+            println("Error occuring on closing file:")
+            println(e as str)
+            ret
+        end
+    end
+end
